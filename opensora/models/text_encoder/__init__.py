@@ -3,7 +3,7 @@ from opensora.models.text_encoder.t5 import T5Wrapper
 
 text_encoder = {
     'google/mt5-xl': T5Wrapper,
-    'google/mt5-xxl': T5Wrapper,
+    'google-mt5-xxl': T5Wrapper,
     'google/umt5-xl': T5Wrapper,
     'google/umt5-xxl': T5Wrapper,
     'google/t5-v1_1-xl': T5Wrapper,

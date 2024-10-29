@@ -1,0 +1,22 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --nnodes=1 --nproc_per_node 8 --master_port 29514 \
+    -m opensora.sample.sample \
+    --model_path "/workspace/public/models/Open-Sora-Plan-v1.3.0/any93x640x640" \
+    --save_img_path "./eval/test" \
+    --text_prompt "./myprompts/easy.txt" \
+    --version v1_3 \
+    --num_frames 93 \
+    --height 352 \
+    --width 640 \
+    --cache_dir "../cache_dir" \
+    --ae WFVAEModel_D8_4x8x8 \
+    --ae_path "/workspace/public/models/Open-Sora-Plan-v1.3.0/vae" \
+    --text_encoder_name_1 "/workspace/host_folder/Open-Sora-Plan/google-mt5-xxl" \
+    --fps 18 \
+    --guidance_scale 7.5 \
+    --num_sampling_steps 100 \
+    --max_sequence_length 512 \
+    --sample_method EulerAncestralDiscrete \
+    --seed 1234 \
+    --num_samples_per_prompt 1 \
+    --rescale_betas_zero_snr \
+    --prediction_type "v_prediction"

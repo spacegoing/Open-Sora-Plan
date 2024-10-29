@@ -1,0 +1,1 @@
+/workspace/public/users/lichang93/mydocker/cogvx/host_folder/Open-Sora-Plan/myscripts/train_t2v_v1_3.sh

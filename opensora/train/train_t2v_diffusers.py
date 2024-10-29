@@ -73,6 +73,7 @@ from opensora.sample.pipeline_opensora import OpenSoraPipeline
 from opensora.models.causalvideovae import ae_stride_config, ae_wrapper
 
 # from opensora.utils.utils import monitor_npu_power
+import torch.distributed as dist
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.24.0")
@@ -477,6 +478,15 @@ def main(args):
     args.total_batch_size = total_batch_size
     if args.max_hxw is not None and args.min_hxw is None:
         args.min_hxw = args.max_hxw // 4
+
+    # if accelerator.is_main_process:
+    #     # Convert args to a dictionary
+    #     args_dict = vars(args)
+    #     # Save args to a .json file
+    #     import json
+    #     with open("args.json", "w") as f:
+    #         json.dump(args_dict, f, indent=4)
+
     train_dataset = getdataset(args)
     sampler = LengthGroupedSampler(
                 args.train_batch_size,
